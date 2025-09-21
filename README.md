@@ -1,8 +1,8 @@
-# HealthCare+ - Comprehensive Healthcare App for Seniors and Caregivers
+# HealthVerse - Comprehensive Healthcare App for Seniors and Caregivers
 
 ## 🏥 Project Overview
 
-HealthCare+ is a specialized healthcare application designed to serve three distinct user groups:
+HealthVerse is a specialized healthcare application designed to serve three distinct user groups:
 - **Elderly Users**: Health tracking, memory management, and wellness monitoring
 - **Alzheimer Patients**: Memory aids, task tracking, and daily assistance tools  
 - **Caregivers**: Patient monitoring, geofencing safety, and emergency alert management
