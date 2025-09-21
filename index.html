@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthCare+ - Your Health Companion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">
+                <i class="fas fa-heartbeat"></i>
+                HealthCare+
+            </h1>
+            <nav class="nav">
+                <a href="#" onclick="showHome()" class="nav-link active">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <div class="user-type-selector">
+                    <button onclick="showUserTypeModal()" class="nav-link">
+                        <i class="fas fa-user"></i>
+                        Sign In / Register
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Home Section -->
+        <div id="home-section" class="section active">
+            <div class="container">
+                <div class="hero">
+                    <h2 class="hero-title">Welcome to HealthCare+</h2>
+                    <p class="hero-subtitle">Your comprehensive health companion for seniors and caregivers</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card" onclick="showDoctors()">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3>Find Doctors</h3>
+                        <p>Search specialists by category - Cardiology, Dermatology, and more</p>
+                    </div>
+
+                    <div class="feature-card" onclick="showHomeRemedies()">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Home Remedies</h3>
+                        <p>Natural solutions and remedies for common health issues</p>
+                    </div>
+
+                    <div class="feature-card" onclick="showUserTypeModal('elderly')">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Elderly Care</h3>
+                        <p>Health tracking, memories, and wellness notes for seniors</p>
+                    </div>
+
+                    <div class="feature-card" onclick="showUserTypeModal('alzheimer')">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Alzheimer Support</h3>
+                        <p>Memory aids, task tracking, and daily assistance tools</p>
+                    </div>
+
+                    <div class="feature-card" onclick="showUserTypeModal('caregiver')">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Caregiver Portal</h3>
+                        <p>Monitor patients, set safe zones, and emergency alerts</p>
+                    </div>
+
+                    <div class="feature-card emergency-card" onclick="showEmergencyFeatures()">
+                        <div class="feature-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3>Emergency Features</h3>
+                        <p>Fall detection, GPS tracking, and automatic alerts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Doctors Section -->
+        <div id="doctors-section" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <button onclick="showHome()" class="back-btn">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Home
+                    </button>
+                    <h2>Find Doctors by Specialty</h2>
+                </div>
+
+                <div class="specialty-grid">
+                    <div class="specialty-card" onclick="showDoctorList('cardiology')">
+                        <div class="specialty-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Cardiology</h3>
+                        <p>Heart and cardiovascular specialists</p>
+                    </div>
+
+                    <div class="specialty-card" onclick="showDoctorList('dermatology')">
+                        <div class="specialty-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3>Dermatology</h3>
+                        <p>Skin, hair, and nail specialists</p>
+                    </div>
+
+                    <div class="specialty-card" onclick="showDoctorList('orthopedics')">
+                        <div class="specialty-icon">
+                            <i class="fas fa-bone"></i>
+                        </div>
+                        <h3>Orthopedics</h3>
+                        <p>Bone and joint specialists</p>
+                    </div>
+
+                    <div class="specialty-card" onclick="showDoctorList('neurology')">
+                        <div class="specialty-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Neurology</h3>
+                        <p>Brain and nervous system specialists</p>
+                    </div>
+
+                    <div class="specialty-card" onclick="showDoctorList('ophthalmology')">
+                        <div class="specialty-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Ophthalmology</h3>
+                        <p>Eye care specialists</p>
+                    </div>
+
+                    <div class="specialty-card" onclick="showDoctorList('geriatrics')">
+                        <div class="specialty-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h3>Geriatrics</h3>
+                        <p>Senior care specialists</p>
+                    </div>
+                </div>
+
+                <div id="doctor-list" class="doctor-list" style="display: none;">
+                    <div class="doctor-list-header">
+                        <h3 id="specialty-title"></h3>
+                        <button onclick="hideDoctorList()" class="close-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div id="doctors-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Home Remedies Section -->
+        <div id="remedies-section" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <button onclick="showHome()" class="back-btn">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Home
+                    </button>
+                    <h2>Home Remedies & Natural Solutions</h2>
+                </div>
+
+                <div class="search-box">
+                    <input type="text" id="remedy-search" placeholder="Search for a health condition or symptom..." onkeyup="searchRemedies()">
+                    <button onclick="searchRemedies()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <div class="remedies-categories">
+                    <button onclick="filterRemedies('all')" class="category-btn active">All</button>
+                    <button onclick="filterRemedies('common-cold')" class="category-btn">Common Cold</button>
+                    <button onclick="filterRemedies('digestive')" class="category-btn">Digestive</button>
+                    <button onclick="filterRemedies('pain-relief')" class="category-btn">Pain Relief</button>
+                    <button onclick="filterRemedies('skin-care')" class="category-btn">Skin Care</button>
+                    <button onclick="filterRemedies('sleep')" class="category-btn">Sleep</button>
+                </div>
+
+                <div id="remedies-container" class="remedies-container">
+                    <!-- Remedies will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Features Section -->
+        <div id="emergency-section" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <button onclick="showHome()" class="back-btn">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Home
+                    </button>
+                    <h2>Emergency & Safety Features</h2>
+                </div>
+
+                <div class="emergency-grid">
+                    <div class="emergency-feature">
+                        <div class="emergency-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h3>Fall Detection</h3>
+                        <p>Automatic fall detection with 20-second response window</p>
+                        <div class="fall-detection-demo">
+                            <button id="fall-test-btn" onclick="simulateFallDetection()" class="demo-btn">
+                                Test Fall Detection
+                            </button>
+                            <button id="im-okay-btn" onclick="cancelFallAlert()" class="okay-btn" style="display: none;">
+                                I'm Okay
+                            </button>
+                        </div>
+                        <div id="fall-status" class="status-display"></div>
+                    </div>
+
+                    <div class="emergency-feature">
+                        <div class="emergency-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Location Tracking</h3>
+                        <p>Real-time GPS location for emergency services</p>
+                        <button onclick="getCurrentLocation()" class="demo-btn">
+                            Get Current Location
+                        </button>
+                        <div id="location-status" class="status-display"></div>
+                    </div>
+
+                    <div class="emergency-feature">
+                        <div class="emergency-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <h3>Hospital Alert System</h3>
+                        <p>Automatic notification to nearby hospitals</p>
+                        <div class="hospital-list">
+                            <h4>Nearby Hospitals:</h4>
+                            <div id="nearby-hospitals">
+                                <div class="hospital-item">
+                                    <i class="fas fa-hospital"></i>
+                                    <span>City General Hospital - 2.3 km</span>
+                                </div>
+                                <div class="hospital-item">
+                                    <i class="fas fa-hospital"></i>
+                                    <span>St. Mary's Medical Center - 3.1 km</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- User Type Selection Modal -->
+    <div id="user-type-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Select Your Account Type</h3>
+                <button onclick="hideUserTypeModal()" class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="user-type-options">
+                <div class="user-type-card" onclick="showAuth('elderly')">
+                    <div class="user-type-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Elderly User</h4>
+                    <p>Health tracking, memories, and wellness management</p>
+                </div>
+
+                <div class="user-type-card" onclick="showAuth('alzheimer')">
+                    <div class="user-type-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4>Alzheimer Patient</h4>
+                    <p>Memory aids, task tracking, and daily assistance</p>
+                </div>
+
+                <div class="user-type-card" onclick="showAuth('caregiver')">
+                    <div class="user-type-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Caregiver</h4>
+                    <p>Patient monitoring, safety zones, and alerts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/doctors.js"></script>
+    <script src="js/remedies.js"></script>
+    <script src="js/emergency.js"></script>
+</body>
+</html>
